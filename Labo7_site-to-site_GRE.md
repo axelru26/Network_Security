@@ -1,5 +1,5 @@
 # Topologie
-![[Ipsec vpn Site to site 1.png]]
+![](Images/)
 Le switch L3 et les 3 routeurs partagent leur table de routage avec OSPF, les interface Fa1 des routeurs n'ont pas OSPF de configuré
 
 # Réalisation du lab

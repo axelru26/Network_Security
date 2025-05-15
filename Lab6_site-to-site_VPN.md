@@ -5,7 +5,7 @@
 
 ### topologie
 
-![[Ipsecvpn_Site_to_site.webp]]
+![](Images/Ipsecvpn_Site_to_site.webp)
 
 ### configuration
 

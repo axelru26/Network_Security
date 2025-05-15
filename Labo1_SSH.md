@@ -2,6 +2,8 @@
 
 ## Topologie
 
+![](Images/Lab1_Topology.png)
+
 ---
 
 ## Configuration de l'ISE

@@ -80,11 +80,11 @@ Installer le server IIS via "add roles and features" => Server Role (Web server 
 ## SSL VPN WIZARD (WOLOLO)
 Aller dans Wizard > VPN Wizard > Clientless SSL VPN Wizard (onglet en haut à gauche)
 Next
-![[8_1.png]]
+![](Images/8_1.png)
 	Connexion profile name : ClientlessProfile
 	Cocher caser "Connexion group alias/url" et compléter  : CLIENTLESS
 Next
-![[8_2.png]]
+![](Images/8_2.png)
 	Cocher authentication using the local user database
 	Ajouter user : cisco | password : P@ssw0rd (confirmer le password)
 	
@@ -96,9 +96,9 @@ Next
 		bookmark title : WEB | URL : http://192.168.3.1 => ok
 	add =>Select bookmark type => url with get => ok
 		bookmark title : CIFS | URL : cifs://192.168.3.1/share => ok => ok (global)
-![[8_3.png]]
+![](Images/8_3.png)
 	Sélection de la liste (on clique dessus) => "Assign", sélectionner GPClientless et le user cisco => ok
-	![[8_4.png]]
+	![](Images/8_4.png)
 Next
 Finish
 ## Remote access VPN
@@ -132,7 +132,8 @@ Address Pool => New pool
 - Name : Pool_Lab 
 - Starting address IP : Adresse de départ pour la pool dhcp du VPN (ici 192.168.4.100)
 - Ending Ip address : (ici 192.168.4.150)
-- Subnet Mask : 255.255.255.0 
+- Subnet Mask : 255.255.255.0
+![](Images/8_5.png)
 ok => Next
 Next
 Ne rien faire pour le VPN => Cliquer ok sur la pop-up
@@ -146,7 +147,7 @@ Finish
 Configuration > Remote Access VPN (en bas à gauche) > AAA/Local Users > Local Users > Cliquer sur cisco2
 Edit
 Sélection VPN policy
-![[8_6.png]]
+![](Images/8_6.png)
 - Group Policy : Décocher inherit, sélectionner Profile Anyconnect 
 - Connection Profile (Tunnel Group) Lock : Décocher Inherit et sélectionner Anyconnect Profile
 

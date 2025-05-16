@@ -25,14 +25,14 @@ Sur GigabitEthernet0/2 :
 	Interface Name : inside
 	Security Level : 100
 	Enable Interface : Case à cocher
-	IP Address : 192.168.4.253
+	IP Address : 192.168.4.254
 	Subnet Mask : 255.255.255.0
 
 Sur GigabitEthernet0/1 :
 	Interface Name : dmz
 	Security Level : 50 (entre 1 et 99)
 	Enable Interface : Case à cocher
-	IP Address : 192.168.3.253
+	IP Address : 192.168.3.254
 	Subnet Mask : 255.255.255.0
 
 Apply

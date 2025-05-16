@@ -34,6 +34,10 @@
 - Dans l'onglet "Security", on le met à None pour le moment.
 - *Policy Profile*: Choisir un nom, Status enabled, Central DHCP et Switching disabled.
 - Dans l'onglet "Access Policies", spécifier l'ID d'un VLAN utilisateur.
+
+> [!WARNING]
+> C'est normal que les VLANs n'apparaissent pas dans le menu déroulant. C'est suffisant de juste écrire l'ID du VLAN dans la zone texte.
+
 - *Policy Tag*: Lier les deux profils précédemment créés dans une nouvelle "WLAN-POLICY Map"
 - Apply
 

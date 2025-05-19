@@ -22,6 +22,88 @@
 - *Configuration > Static Routing*: Ajouter un route statique vers le subnet de l'AP, avec l'IP du switch comme next hop.
 - *Monitoring > Wireless > AP Statistics*: Vérifier que l'AP est bien en état registered
 
+## General Config
+
+```
+ena
+conf t
+
+ip routing
+
+! Vlan 1 configuration
+interface fastEthernet1/0/1
+no switchport
+ip address 192.168.2.254 255.255.255.0
+no shutdown
+exit
+
+! DHCP pool
+ip dhcp pool vlan1
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.254
+
+! VLAN 1
+interface vlan1
+ ip address 192.168.1.254 255.255.255.0
+ no shutdown
+
+! Port 48 in VLAN 1
+interface fastethernet1/0/48
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+```
+
+## Test Vlan Config
+```
+interface vlan 20
+ip address 192.168.20.254 255.255.255.0
+no shutdown
+exit
+
+interface vlan 21
+ip address 192.168.21.254 255.255.255.0
+no shutdown
+exit
+
+ip dhcp pool VLAN20
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.254
+exit
+
+ip dhcp pool VLAN21
+network 192.168.21.0 255.255.255.0
+default-router 192.168.21.254
+exit
+```
+
+## AP Config
+
+```
+! Vlan 3 configuration
+interface vlan 3
+ip address 192.168.3.254 255.255.255.0
+no shutdown
+exit
+
+! Trunk between Switch and AP
+interface fast 1/0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,3,20,21
+switchport trunk native vlan 3
+no shutdown
+exit
+
+! DHCP Pool between AP and cWLC
+ip dhcp pool VLAN_VWLC
+network 192.168.3.0 255.255.255.0
+default-router 192.168.3.254
+option 43 hex f104c0a802CC
+exit
+```
+
+
 ### Sans AAA
 
 - *Configuration > Tags & Profiles > Tags > Site*: Dans le *default-site-tag*, décocher "Local Site"

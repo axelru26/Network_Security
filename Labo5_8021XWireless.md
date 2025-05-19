@@ -8,22 +8,6 @@
 ## Configuration du switch L3
 
 - Configurer un adresse et un pool DHCP sur le VLAN 1 pour PC1
-- Configurer un trunk entre le switch et l'AP avec 3 VLANs:  
-	- Un VLAN natif pour la communication CAPWAP entre le vWLC et l'AP
-	- Deux autres pour différents groupes de clients
-- Configurer des pools DHCP pour ces trois VLANs
-	- Le pool DHCP du VLAN natif a besoin d'une option spéciale pour que l'AP puisse contacter son controlleur: `option 43 hex f104c0a802cc`
-
-> [!NOTE]
-> les 8 derniers chiffres hexadécimaux correspondent à l'adresse IP du vWLC
-
-## Configuration du vWLC
-
-- *Configuration > Static Routing*: Ajouter un route statique vers le subnet de l'AP, avec l'IP du switch comme next hop.
-- *Monitoring > Wireless > AP Statistics*: Vérifier que l'AP est bien en état registered
-
-## General Config
-
 ```
 ena
 conf t
@@ -54,31 +38,9 @@ interface fastethernet1/0/48
  no shutdown
 ```
 
-## Test Vlan Config
-```
-interface vlan 20
-ip address 192.168.20.254 255.255.255.0
-no shutdown
-exit
+- Configurer un trunk entre le switch et l'AP avec 3 VLANs:  
 
-interface vlan 21
-ip address 192.168.21.254 255.255.255.0
-no shutdown
-exit
-
-ip dhcp pool VLAN20
-network 192.168.20.0 255.255.255.0
-default-router 192.168.20.254
-exit
-
-ip dhcp pool VLAN21
-network 192.168.21.0 255.255.255.0
-default-router 192.168.21.254
-exit
-```
-
-## AP Config
-
+  - Un VLAN natif pour la communication CAPWAP entre le vWLC et l'AP
 ```
 ! Vlan 3 configuration
 interface vlan 3
@@ -94,7 +56,36 @@ switchport trunk allowed vlan 1,3,20,21
 switchport trunk native vlan 3
 no shutdown
 exit
+```
 
+  - Deux autres pour différents groupes de clients
+```
+interface vlan 20
+ip address 192.168.20.254 255.255.255.0
+no shutdown
+exit
+
+interface vlan 21
+ip address 192.168.21.254 255.255.255.0
+no shutdown
+exit
+```
+
+- Configurer des pools DHCP pour ces trois VLANs
+```
+ip dhcp pool VLAN20
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.254
+exit
+
+ip dhcp pool VLAN21
+network 192.168.21.0 255.255.255.0
+default-router 192.168.21.254
+exit
+```
+
+- Le pool DHCP du VLAN natif a besoin d'une option spéciale pour que l'AP puisse contacter son controlleur: `option 43 hex f104c0a802cc`
+```
 ! DHCP Pool between AP and cWLC
 ip dhcp pool VLAN_VWLC
 network 192.168.3.0 255.255.255.0
@@ -103,6 +94,13 @@ option 43 hex f104c0a802CC
 exit
 ```
 
+> [!NOTE]
+> les 8 derniers chiffres hexadécimaux correspondent à l'adresse IP du vWLC
+
+## Configuration du vWLC
+
+- *Configuration > Static Routing*: Ajouter un route statique vers le subnet de l'AP, avec l'IP du switch comme next hop.
+- *Monitoring > Wireless > AP Statistics*: Vérifier que l'AP est bien en état registered
 
 ### Sans AAA
 

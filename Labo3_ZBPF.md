@@ -65,5 +65,5 @@ zone-pair security ZP_INSIDE_TO_OUTSIDE source INSIDE destination OUTSIDE
 
 ## Remerciements
 
--ChatGPT pour ses loyaux services
--Et tous les maintainers de ce repository
+- ChatGPT pour ses loyaux services
+- Et tous les maintainers de ce repository

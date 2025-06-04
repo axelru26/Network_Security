@@ -106,7 +106,7 @@ ip host server.hepl.local 192.168.2.201
 
 ! chercher le certificat
 crypto pki trustpoint MYCA
-enrollment url http://server.hepl.local/certsrv/mscep.dll
+enrollment url http://server.hepl.local/certsrv/mscep/mscep.dll
 enrollment mode ra
 
 ```

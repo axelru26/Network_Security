@@ -3,9 +3,11 @@
 ## Fonctionnement général
 
 1. On définit des zones (INSIDE, OUTSIDE, DMZ, SELF, ...)
-2. Assigner les zones aux interfaces: par défaut, le traffic dans une zone est allowed, et le traffic entre zones est denied.
+2. Assigner les zones aux interfaces: par défaut, le traffic dans une zone est
+   allowed, et le traffic entre zones est denied.
 3. Créer une `class-map` pour matcher le traffic
-4. Créer une `policy-map` pour agir sur le traffic matché: inspect, drop, accept.
+4. Créer une `policy-map` pour agir sur le traffic matché: inspect, drop,
+   accept.
 5. Appliquer la `policy-map` à une `zone-pair`
 
 ## Exemple avec FTP allowed pour 192.168.1.12
@@ -15,6 +17,7 @@
 ```
 zone security INSIDE
 zone security OUTSIDE
+zone security DMZ
 ```
 
 2. Assign Interfaces to Zones
@@ -43,7 +46,7 @@ We’re matching FTP and an access list. Let’s create that:
 
 ```
 ip access-list extended FTP_ONLY
- permit tcp host 192.168.1.12 any eq 21
+ permit tcp host 192.168.1.12 any
 ```
 
 4. Create a Policy Map

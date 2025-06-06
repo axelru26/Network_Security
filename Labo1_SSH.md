@@ -18,7 +18,7 @@
 	- Condition: `Radius NAS-Port-Type Equals Virtual` 
 	- Use: Internal Users
 - Ajouter une *Authorization policy* pour l'admin junior:
-	- Condition: `Radius NAS-Port-Type Equals Ethernet` AND `IdentityGroup-Name Equals User Identity Groups:Groupe1`
+	- Condition: `Radius NAS-Port-Type Equals Virtual` AND `IdentityGroup-Name Equals User Identity Groups:Groupe1`
 	- Authorization Profile: `cisco-av-pair = shell:priv-lvl=7`
 - Ajouter une *Authorization policy* pour l'admin junior:
 	- Condition: Idem que précdent mais autre Groupe2

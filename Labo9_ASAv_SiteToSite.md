@@ -1,6 +1,6 @@
 # Topologie
 
-![[Images/Lab9_1.png]]
+![](Images/Lab9_1.png)
 
 # Config de Base
 Mise en place des IP et OSPF pour la redistribution totale des routes le tout sur chaque interface.
@@ -59,21 +59,21 @@ end
 !!! ATTENTION !!!
 Il faut avoir fait la configuration de base de ASAv (configuration des interfaces et Firewall sur l'ASAv) et avoir mis une route statique. Voir labo8 pour la configuration de base si nécessaire !
 Firewall :
-![[Lab9_2.png]]
+![](Lab9_2.png)
 Route statique :
-![[Lab9_3.png]]
+![](Lab9_3.png)
 
 Normalement à ce stade tout le monde devrait pourvoir se ping sans soucis !
 # Configuration ASAv
 Aller dans Wizard > VPN Wizard > Site To Site VPN et suivre les configurations :
 ## Etape 1 (peer)
-![[Images/Lab9_4.png]]
+![](Images/Lab9_4.png)
 ## Etape 2 (ACL)
-![[Images/Lab9_5.png]]
+![](Images/Lab9_5.png)
 ## Etape 3 (pre-shared key)
-![[Images/Lab9_6.png]]
+![](Images/Lab9_6.png)
 ## Etape 4 (NAT-T cocher)
-![[Images/Lab9_7.png]]
+![](Images/Lab9_7.png)
 
 Fini pour ASAv
 # Configuration Ikev1 sur R1
